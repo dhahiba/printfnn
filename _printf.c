@@ -29,8 +29,7 @@ while (*s)
 {
 _putchar(*s);
 s++;
-count++;
-}
+count++; }
 break;
 case '%':
 _putchar('%');
@@ -41,14 +40,10 @@ _putchar('%');
 _putchar(format[i]);
 count += 2;
 break;
-}
-}
+}}
 else
 {
 _putchar(format[i]);
-count++;
-}
-}
-va_end(args);
-return (count);
-}
+count++; }
+} va_end(args);
+return (count); }
