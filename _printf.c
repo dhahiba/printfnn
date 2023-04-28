@@ -1,6 +1,11 @@
 #include "main.h"
 #include <stdarg.h>
+<<<<<<< HEAD
 void print_buffer(char buffer[], int *buff_ind);
+=======
+
+
+>>>>>>> 16917705d18a07fec3547aa52a0718349dcc02db
 /**
  * _printf - ...
  * @format: ...
@@ -8,6 +13,7 @@ void print_buffer(char buffer[], int *buff_ind);
  */
 int _printf(const char *format, ...)
 {
+<<<<<<< HEAD
 	int i, printed = 0, printed_chars = 0;
 	int flags, width, precision, size, buff_ind = 0;
 	va_list list;
@@ -62,4 +68,39 @@ void print_buffer(char buffer[], int *buff_ind)
 		write(1, &buffer[0], *buff_ind);
 
 *buff_ind = 0;
+=======
+	va_list args;
+	int i, count = 0;
+
+	va_start(args, format);
+	for (i = 0; format[i] != '\0'; i++)
+	{
+		if (format[i] == '%')
+		{
+			switch (format[++i])
+			{
+				case 'c':
+					_putchar(va_arg(args, int));
+					count++;
+					break;
+				case 's':
+					count += puts(va_arg(args, char *));
+					break;
+				case '%':
+					_putchar('%');
+					count++;
+					break;
+				default:
+					break;
+			}
+		}
+		else
+		{
+			_putchar(format[i]);
+			count++;
+		}
+	}
+	va_end(args);
+	return (count);
+>>>>>>> 16917705d18a07fec3547aa52a0718349dcc02db
 }
